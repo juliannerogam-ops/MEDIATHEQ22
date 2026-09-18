@@ -34,11 +34,11 @@ require_once 'config.php';
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="/MEDIATHEQ22/index.php">Home</a>
         </li>
         <?php if (isset($_SESSION['user'])): ?>
         <li class="nav-item">
-          <a class="nav-link" href="/views/backend/dashboard.php">Admin</a>
+          <a class="nav-link" href="/MEDIATHEQ22/views/backend/dashboard.php">Admin</a>
         </li>
         <?php endif; ?>
       </ul>
