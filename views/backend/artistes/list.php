@@ -33,7 +33,7 @@ $artistes = sql_select(
                     <td><?= (int) $artiste['idArt'] ?></td>
                     <td><?= htmlspecialchars($artiste['prenomArt']) ?></td>
                     <td><?= htmlspecialchars($artiste['nomArt']) ?></td>
-                    <td><?= htmlspecialchars($artiste['nomGp'] ?? 'Groupe #' . $artiste['idGp']) ?></td>
+                    <td><?= htmlspecialchars($artiste['nomGp'] ?? 'Aucun groupe') ?></td>
                     <td>
                         <a href="edit.php?idArt=<?= (int) $artiste['idArt'] ?>" class="btn btn-warning btn-sm">Modifier</a>
                         <a href="delete.php?idArt=<?= (int) $artiste['idArt'] ?>" class="btn btn-danger btn-sm">Supprimer</a>

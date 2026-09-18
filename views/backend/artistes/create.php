@@ -12,9 +12,9 @@ $groupes = sql_select('GROUPE', 'idGp, nomGp', '', '', 'nomGp ASC');
 
     <form action="<?= ROOT_URL ?>/api/artistes/create.php" method="post">
         <div class="mb-3">
-            <label for="idGp" class="form-label">Groupe</label>
-            <select id="idGp" name="idGp" class="form-select" required>
-                <option value="">-- Choisir un groupe --</option>
+            <label for="idGp" class="form-label">Groupe (facultatif)</label>
+            <select id="idGp" name="idGp" class="form-select">
+                <option value="">-- Aucun groupe --</option>
                 <?php foreach ($groupes as $groupe): ?>
                     <option value="<?= (int) $groupe['idGp'] ?>"><?= htmlspecialchars($groupe['nomGp']) ?></option>
                 <?php endforeach; ?>

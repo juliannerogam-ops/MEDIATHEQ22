@@ -19,10 +19,10 @@ require_once 'config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Médiathèque</title>
     <!-- Load CSS -->
-    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="<?= ROOT_URL ?>/src/css/style.css" />
     <!-- Bootstrap CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-    <link rel="shortcut icon" type="image/x-icon" href="src/images/article1.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?= ROOT_URL ?>/src/images/article1.png" />
 </head>
 <body>
 <nav class="navbar navbar-expand-lg site-header">
