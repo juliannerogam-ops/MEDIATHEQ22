@@ -55,19 +55,19 @@ require_once 'config.php';
         </span>
 
         <a class="btn btn-danger"
-           href="/views/backend/security/login.php?action=logout">
+            href="<?= ROOT_URL ?>/views/backend/security/login.php?action=logout">
            Déconnexion
         </a>
 
       <?php else: ?>
 
         <a class="btn btn-primary m-1"
-           href="/views/backend/security/login.php">
+            href="<?= ROOT_URL ?>/views/backend/security/login.php">
            Login
         </a>
 
         <a class="btn btn-dark m-1"
-           href="/views/backend/security/signup.php">
+            href="<?= ROOT_URL ?>/views/backend/security/signup.php">
            Sign up
         </a>
 
