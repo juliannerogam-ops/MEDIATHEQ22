@@ -1,134 +1,54 @@
 <?php
-require_once '../../../header.php';
+include '../../../header.php';
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/admin_guard.php';
-
-requireAdmin('page');
-
-$numMemb = (int)($_GET['numMemb'] ?? 0);
-
-if ($numMemb === 0) {
-    echo "<div class='alert alert-danger'>Erreur : Aucun membre sélectionné.</div>";
-    require_once '../../../footer.php';
-    exit();
+if (!isset($_SESSION['user'])) {
+    header('Location: /MEDIATHEQ22/views/backend/security/login.php');
+    exit;
 }
 
-$membre = sql_select("MEMBRE", "*", "numMemb = $numMemb");
-$membre = $membre[0] ?? null;
+$email = trim($_GET['eMailUser'] ?? '');
+$users = $email === '' ? [] : sql_select(
+    'USER',
+    'nomEUser, prenomUser, eMailUser',
+    "eMailUser = '" . str_replace("'", "''", $email) . "'"
+);
+$user = $users[0] ?? null;
 
-$statuts = sql_select("STATUT", "*");
-
-if (!$membre) {
-    echo "<div class='alert alert-danger'>Erreur : Membre introuvable.</div>";
-    require_once '../../../footer.php';
-    exit();
+if (!$user) {
+    echo '<main class="container my-5"><div class="alert alert-danger">Utilisateur introuvable.</div></main>';
+    include '../../../footer.php';
+    exit;
 }
 ?>
 
-<div class="container mt-5">
-    <h2>Modification du Membre</h2>
+<main class="container my-5">
+    <h1>Modifier un utilisateur</h1>
 
-    <form action="../../../api/members/update.php" method="POST" id="formUpdate">
+    <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($_GET['error']) ?></div>
+    <?php endif; ?>
 
-        <input type="hidden" id="recaptcha_token" name="recaptcha_token">
-        <input type="hidden" name="numMemb" value="<?= $membre['numMemb'] ?>">
+    <form action="<?= ROOT_URL ?>/api/users/update.php" method="post">
+        <input type="hidden" name="originalEmail" value="<?= htmlspecialchars($user['eMailUser']) ?>">
 
         <div class="mb-3">
-            <label class="form-label">Pseudo *</label>
-            <input type="text" name="pseudoMemb" class="form-control" value="<?= htmlspecialchars($membre['pseudoMemb']) ?>" disabled>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Prénom *</label>
-                <input type="text" name="prenomMemb" class="form-control" value="<?= htmlspecialchars($membre['prenomMemb']) ?>" required>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Nom *</label>
-                <input type="text" name="nomMemb" class="form-control" value="<?= htmlspecialchars($membre['nomMemb']) ?>" required>
-            </div>
+            <label for="prenomUser" class="form-label">Prénom</label>
+            <input id="prenomUser" name="prenomUser" class="form-control" type="text" value="<?= htmlspecialchars($user['prenomUser']) ?>" required>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Statut</label>
-            <select name="numStat" class="form-select">
-                <?php foreach ($statuts as $statut): ?>
-                    <option value="<?= $statut['numStat'] ?>" <?= ($statut['numStat'] == $membre['numStat']) ? 'selected' : '' ?>>
-                        <?= htmlspecialchars($statut['libStat']) ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
+            <label for="nomUser" class="form-label">Nom</label>
+            <input id="nomUser" name="nomUser" class="form-control" type="text" value="<?= htmlspecialchars($user['nomEUser']) ?>" required>
         </div>
 
-        <hr>
-
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Email *</label>
-                <input type="email" name="eMailMemb" class="form-control" value="<?= htmlspecialchars($membre['eMailMemb']) ?>" required>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Confirmer Email (Si changement)</label>
-                <input type="email" name="eMailMembConf" class="form-control" placeholder="Répéter l'email pour valider le changement">
-            </div>
+        <div class="mb-3">
+            <label for="eMailUser" class="form-label">Adresse mail</label>
+            <input id="eMailUser" name="eMailUser" class="form-control" type="email" value="<?= htmlspecialchars($user['eMailUser']) ?>" required>
         </div>
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Nouveau Mot de passe</label>
-                <input type="password" name="passMemb" class="form-control" placeholder="Laisser vide pour ne pas changer">
-                <small class="text-muted">8-15 caractères, 1 Maj, 1 Min, 1 Chiffre.</small>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Confirmer Mot de passe</label>
-                <input type="password" name="passMembConf" class="form-control" placeholder="Répéter le mot de passe">
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Date Création</label>
-                <input type="text" class="form-control" value="<?= $membre['dtCreaMemb'] ?>" disabled>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Dernière Modification (Mise à jour automatique)</label>
-                <input type="text" class="form-control" value="<?= $membre['dtMajMemb'] ?? '-' ?>" disabled>
-            </div>
-        </div>
-
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" checked disabled>
-            <label class="form-check-label">Accord RGPD (Données conservées)</label>
-        </div>
-
-        <div class="mt-4">
-            <button type="submit" class="btn btn-primary">Mettre à jour</button>
-        </div>
+        <a href="list.php" class="btn btn-secondary">Annuler</a>
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
     </form>
-</div>
+</main>
 
-<script>
-const form = document.getElementById('formUpdate');
-
-form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    if (typeof grecaptcha === 'undefined') {
-        alert('Captcha indisponible');
-        return;
-    }
-
-    grecaptcha.ready(function () {
-        grecaptcha.execute('<?= "6LewKl8sAAAAAApTAS7X8kAdof0A4yzZlIq9BoAb" ?>', { action: 'member_update' })
-            .then(function (token) {
-                document.getElementById('recaptcha_token').value = token;
-                form.submit();
-            });
-    });
-});
-</script>
-
-<?php require_once '../../../footer.php'; ?>
-
+<?php include '../../../footer.php'; ?>
