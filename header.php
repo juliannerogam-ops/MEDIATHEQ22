@@ -36,9 +36,11 @@ require_once 'config.php';
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+        <?php if (isset($_SESSION['user'])): ?>
         <li class="nav-item">
           <a class="nav-link" href="/views/backend/dashboard.php">Admin</a>
         </li>
+        <?php endif; ?>
       </ul>
     </div>
     <!--right align-->
