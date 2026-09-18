@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Trueno', Arial, sans-serif;
+  font-family: 'Trueno', sans-serif;
   background-color: var(--pink-main);
   color: var(--pink-text);
 }
@@ -192,4 +192,223 @@ a:hover {
   height: 100px;
   border-radius: 50%;
   margin-bottom: 0.5rem;
+}
+
+/* Page d'accueil */
+.site-header {
+  padding: 0.9rem 2.5rem;
+  border-bottom: 1px solid rgba(74, 36, 48, 0.08);
+}
+
+.site-header .navbar-brand {
+  color: var(--pink-text);
+  font-weight: 700;
+}
+
+.site-header .nav-link {
+  color: var(--pink-text);
+  font-weight: 600;
+  margin-left: 1.25rem;
+}
+
+.home-page {
+  max-width: 1280px;
+  min-height: calc(100vh - 80px);
+  margin: 0 auto;
+  padding: 2.5rem 3.5rem 5rem;
+  background: #FFFFFF;
+}
+
+.favorite-heading {
+  margin-bottom: 1.25rem;
+  color: var(--pink-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.home-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 2.75rem;
+}
+
+.home-search {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  margin-bottom: 0.9rem;
+  padding: 0 0.85rem 0 1rem;
+  background: #F7F3EC;
+  border-radius: 999px;
+}
+
+.home-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--pink-text);
+  font-size: 0.7rem;
+}
+
+.home-search button {
+  border: 0;
+  background: transparent;
+  color: #9B9389;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.home-hero {
+  height: 158px;
+  margin-bottom: 2.4rem;
+  border-radius: 10px;
+  background: #F0F0F0;
+}
+
+.home-section-block {
+  margin-bottom: 2.45rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.section-heading h1,
+.section-heading h2,
+.sidebar-block h2 {
+  margin: 0;
+  color: #29252A;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.section-heading a {
+  color: #4B464A;
+  font-size: 0.55rem;
+  text-decoration: none;
+}
+
+.home-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.home-card {
+  min-width: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.home-card-image {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #EFEFEF;
+}
+
+.home-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-card h3 {
+  overflow: hidden;
+  margin: 0.45rem 0 0.1rem;
+  color: #2E2A2E;
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-card p {
+  margin: 0;
+  color: #6F696D;
+  font-size: 0.5rem;
+}
+
+.home-sidebar {
+  padding-top: 3.4rem;
+}
+
+.sidebar-block {
+  margin-bottom: 2rem;
+}
+
+.sidebar-block h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.favorites-panel h2 {
+  width: max-content;
+  padding: 0.6rem 1.4rem;
+  background: var(--pink-light);
+  border-radius: 5px;
+  font-size: 0.95rem;
+}
+
+.sidebar-placeholder {
+  height: 210px;
+  margin-top: 1.3rem;
+  border-radius: 9px;
+  background: #F0F0F0;
+}
+
+.artist-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.artist-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 60px;
+  padding: 0.45rem;
+  border: 2px solid #78B8F8;
+  border-radius: 8px;
+  color: #3D383C;
+  font-size: 0.65rem;
+}
+
+.artist-list-item img {
+  width: 43px;
+  height: 43px;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .home-page {
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .home-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-sidebar {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .home-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-hero {
+    height: 120px;
+  }
 }

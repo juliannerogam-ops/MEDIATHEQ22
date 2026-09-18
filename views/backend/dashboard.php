@@ -14,7 +14,7 @@ include '../../header.php';
 <!-- Bootstrap admin dashboard template -->
 <div>
     <hr class="my-3">
-    <div style="color: black; font-size: 30px; font-family: 'Trueno', Arial, sans-serif; font-weight: 400; padding-left: 3rem ;word-wrap: break-word">Liens permettant d'administrer le Blog Médiathèque</div>    
+    <div style="color: black; font-size: 30px; font-family: 'Trueno', sans-serif; font-weight: 400; padding-left: 3rem ;word-wrap: break-word">Liens permettant d'administrer le Blog Médiathèque</div>    
     <hr class="my-3">
     <div class="container">
         <div class="row">
@@ -36,7 +36,6 @@ include '../../header.php';
                             <td>
                                 <a href="/MEDIATHEQ22/views/backend/users/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/users/create.php" class="btn btn-success">Create</a>
-                                <span class="btn btn-warning disabled">Edit</span>
                             </td>
                             <td></td>
                         </tr>
@@ -45,7 +44,6 @@ include '../../header.php';
                             <td>
                                 <a href="/MEDIATHEQ22/views/backend/albums/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/albums/create.php" class="btn btn-success">Create</a>
-                                <span class="btn btn-warning disabled">Edit</span>
                             </td>
                             <td></td>
                         </tr>
@@ -54,7 +52,6 @@ include '../../header.php';
                             <td>
                                 <a href="/MEDIATHEQ22/views/backend/artistes/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/artistes/create.php" class="btn btn-success">Create</a>
-                                <span class="btn btn-warning disabled">Edit</span>
                             </td>
                             <td></td>
                         </tr>
@@ -63,7 +60,6 @@ include '../../header.php';
                             <td>
                                 <a href="/MEDIATHEQ22/views/backend/groupes/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/groupes/create.php" class="btn btn-success">Create</a>
-                                <span class="btn btn-warning disabled">Edit</span>
                             </td>
                             <td></td>
                         </tr>
@@ -72,7 +68,6 @@ include '../../header.php';
                             <td>
                                 <a href="/MEDIATHEQ22/views/backend/likes/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/likes/create.php" class="btn btn-success">Create</a>
-                                <span class="btn btn-warning disabled">Edit</span>
                             </td>
                             <td></td>
                         </tr>
@@ -81,7 +76,6 @@ include '../../header.php';
                             <td>
                                 <a href="/MEDIATHEQ22/views/backend/titres/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/titres/create.php" class="btn btn-success">Create</a>
-                                <span class="btn btn-warning disabled">Edit</span>
                             </td>
                             <td></td>
                         </tr>

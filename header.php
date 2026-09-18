@@ -27,14 +27,14 @@ require_once 'config.php';
 <body>
 <nav class="navbar navbar-expand-lg site-header">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Médiathèque</a>
+    <a class="navbar-brand" href="<?= ROOT_URL ?>/index.php">Médiathèque</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/MEDIATHEQ22/index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="/MEDIATHEQ22/index.php">Accueil</a>
         </li>
         <?php if (isset($_SESSION['user'])): ?>
         <li class="nav-item">
@@ -43,14 +43,7 @@ require_once 'config.php';
         <?php endif; ?>
       </ul>
     </div>
-    <!--right align-->
-    <div class="d-flex">
-      <?php if (isset($_SESSION['user'])): ?>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Rechercher sur le site…" aria-label="Search" >
-        </form>
-      <?php endif; ?>
-      <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center">
 
       <?php if (isset($_SESSION['user'])): ?>
 
@@ -67,7 +60,7 @@ require_once 'config.php';
 
         <a class="btn btn-primary m-1"
             href="<?= ROOT_URL ?>/views/backend/security/login.php">
-           Login
+           Connexion
         </a>
 
         <a class="btn btn-dark m-1"
@@ -77,7 +70,6 @@ require_once 'config.php';
 
       <?php endif; ?>
 
-    </div>
     </div>
   </div>
 </nav>

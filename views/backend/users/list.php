@@ -16,6 +16,7 @@ $users = sql_select("USER", "nomEUser, prenomUser, eMailUser");
                             <th>Prénom</th>
                             <th>Nom</th>
                             <th>Email</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
 
@@ -25,6 +26,10 @@ $users = sql_select("USER", "nomEUser, prenomUser, eMailUser");
                                 <td><?php echo htmlspecialchars($user['prenomUser']); ?></td>
                                 <td><?php echo htmlspecialchars($user['nomEUser']); ?></td>
                                 <td><?php echo htmlspecialchars($user['eMailUser']); ?></td>
+                                <td>
+                                    <a href="edit.php?eMailUser=<?php echo urlencode($user['eMailUser']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="delete.php?eMailUser=<?php echo urlencode($user['eMailUser']); ?>" class="btn btn-danger btn-sm">Supprimer</a>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
