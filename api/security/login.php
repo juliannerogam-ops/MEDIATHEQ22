@@ -13,39 +13,33 @@ $error = '';
 
 // Traitement login
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
+    $email = trim($_POST['email'] ?? '');
+    $nom = trim($_POST['nom'] ?? '');
+    $prenom = trim($_POST['prenom'] ?? '');
 
     // Récupération du membre
-    $membre = sql_select("MEMBRE", "*", "eMailMemb = '$email'");
+    $emailForQuery = str_replace("'", "''", $email);
+    $user = sql_select("USER", "*", "eMailUser = '$emailForQuery'");
 
-    if (empty($membre)) {
-        $error = "Email ou mot de passe incorrect.";
+    if (empty($user)) {
+        $error = "Email incorrect.";
     } else {
-        $membre = $membre[0];
+        $user = $user[0];
 
-        if (!password_verify($password, $membre['passMemb'])) {
-            $error = "Email ou mot de passe incorrect.";
+        if (
+            strcasecmp((string) $user['eMailUser'], $email) !== 0
+            || strcasecmp((string) $user['nomEUser'], $nom) !== 0
+            || strcasecmp((string) $user['prenomUser'], $prenom) !== 0
+        ) {
+            $error = "Le nom ou le prénom ne correspond pas à cette adresse email.";
         } else {
-            // Récupération du statut
-            $statut = sql_select(
-                "STATUT",
-                "libStat",
-                "numStat = " . $membre['numStat']
-            )[0]['libStat'];
-
             $_SESSION['user'] = [
-                'id'     => $membre['numMemb'],
-                'email'  => $membre['eMailMemb'],
-                'pseudo' => $membre['pseudoMemb'],
-                'statut' => $statut
+                'email'  => $user['eMailUser'],
+                'nom'    => $user['nomEUser'],
+                'prenom' => $user['prenomUser']
             ];
 
-            if ($statut === 'admin') {
-                header('Location: ../dashboard.php');
-            } else {
-                header('Location: /index.php'); // Home
-            }
+            header('Location: /index.php');
             exit;
         }
     }
@@ -61,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method="post">
         <input class="form-control mb-2" name="email" type="email" placeholder="Email" required>
-        <input class="form-control mb-2" name="password" type="password" placeholder="Mot de passe" required>
+        <input class="form-control mb-2" name="nom" placeholder="Nom" required>
+        <input class="form-control mb-2" name="prenom" placeholder="Prénom" required>
 
         <button class="btn btn-primary mt-2">Connexion</button>
         <a href="signup.php" class="btn btn-secondary mt-2">Créer un compte</a>

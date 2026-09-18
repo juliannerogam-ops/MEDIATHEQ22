@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             sql_insert(
                 "user",
-                "eMailUser,nomUser, prenomUser",
+                "eMailUser, nomEUser, prenomUser",
                 "'$email', '$nom', '$prenom'"
             );
 
@@ -38,12 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="post">
-        <input class="form-control mb-2" name="prenom" placeholder="Prénom" required>
-        <input class="form-control mb-2" name="nom" placeholder="Nom" required>
-        <input class="form-control mb-2" name="pseudo" placeholder="Pseudo" required>
         <input class="form-control mb-2" name="email" type="email" placeholder="Email" required>
-        <input class="form-control mb-2" name="password" type="password" placeholder="Mot de passe" required>
-        <input class="form-control mb-2" name="confirm" type="password" placeholder="Confirmation" required>
+        <input class="form-control mb-2" name="nom" placeholder="Nom" required>
+        <input class="form-control mb-2" name="prenom" placeholder="Prénom" required>
 
         <button class="btn btn-success mt-2">Créer le compte</button>
         <a href="login.php" class="btn btn-primary mt-2">Connexion</a>
