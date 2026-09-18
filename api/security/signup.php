@@ -5,40 +5,27 @@ $error = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $prenom  = $_POST['prenom'] ?? '';
-    $nom     = $_POST['nom'] ?? '';
-    $pseudo  = $_POST['pseudo'] ?? '';
-    $email   = $_POST['email'] ?? '';
-    $pass    = $_POST['password'] ?? '';
-    $confirm = $_POST['confirm'] ?? '';
+    $prenom  = $_POST['prenomUser'] ?? '';
+    $nom     = $_POST['nomUser'] ?? '';
+    $email   = $_POST['eMailUser'] ?? '';
 
-    if ($pass !== $confirm) {
-        $error = "Les mots de passe ne correspondent pas.";
-    } else {
-        // Vérifier si email existe déjà
-        $exist = sql_select("MEMBRE", "*", "eMailMemb = '$email'");
+
+        $exist = sql_select("user", "*", "eMailUser = '$email'");
 
         if (!empty($exist)) {
             $error = "Un compte avec cet email existe déjà.";
         } else {
-            $hash = password_hash($pass, PASSWORD_DEFAULT);
-
-            $statutMembre = sql_select(
-                "STATUT",
-                "numStat",
-                "libStat = 'Membre'"
-            )[0]['numStat'];
-
+            
             sql_insert(
-                "MEMBRE",
-                "prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, numStat",
-                "'$prenom', '$nom', '$pseudo', '$hash', '$email', NOW(), $statutMembre"
+                "user",
+                "eMailUser,nomUser, prenomUser",
+                "'$email', '$nom', '$prenom'"
             );
 
             $success = "Compte créé avec succès. Vous pouvez vous connecter.";
         }
     }
-}
+
 ?>
 
 <div class="container mt-5">
