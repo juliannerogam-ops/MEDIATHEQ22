@@ -104,7 +104,7 @@ create index TITRE_FK on TITRE
 create table ARTISTE
 (
    idArt int(10) not null auto_increment,   -- PK
-   idGp int(10) not null,                   -- FK
+   idGp int(10) null,                       -- FK facultative
    nomArt varchar(50),
    prenomArt varchar(50),
    primary key (idArt)

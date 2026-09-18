@@ -24,8 +24,9 @@ if (!$artiste) {
         <input type="hidden" name="idArt" value="<?= (int) $artiste['idArt'] ?>">
 
         <div class="mb-3">
-            <label for="idGp" class="form-label">Groupe</label>
-            <select id="idGp" name="idGp" class="form-select" required>
+            <label for="idGp" class="form-label">Groupe (facultatif)</label>
+            <select id="idGp" name="idGp" class="form-select">
+                <option value="">-- Aucun groupe --</option>
                 <?php foreach ($groupes as $groupe): ?>
                     <option value="<?= (int) $groupe['idGp'] ?>" <?= (int) $groupe['idGp'] === (int) $artiste['idGp'] ? 'selected' : '' ?>>
                         <?= htmlspecialchars($groupe['nomGp']) ?>

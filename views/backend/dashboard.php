@@ -14,7 +14,7 @@ include '../../header.php';
 <!-- Bootstrap admin dashboard template -->
 <div>
     <hr class="my-3">
-    <div style="color: black; font-size: 30px; font-family: Montserrat; font-weight: 400; padding-left: 3rem ;word-wrap: break-word">Liens permettant d'administrer le Blog Médiathèque</div>    
+    <div style="color: black; font-size: 30px; font-family: 'Trueno', Arial, sans-serif; font-weight: 400; padding-left: 3rem ;word-wrap: break-word">Liens permettant d'administrer le Blog Médiathèque</div>    
     <hr class="my-3">
     <div class="container">
         <div class="row">
@@ -37,7 +37,6 @@ include '../../header.php';
                                 <a href="/MEDIATHEQ22/views/backend/users/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/users/create.php" class="btn btn-success">Create</a>
                                 <span class="btn btn-warning disabled">Edit</span>
-                                <span class="btn btn-danger disabled">Delete</span>
                             </td>
                             <td></td>
                         </tr>
@@ -47,7 +46,6 @@ include '../../header.php';
                                 <a href="/MEDIATHEQ22/views/backend/albums/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/albums/create.php" class="btn btn-success">Create</a>
                                 <span class="btn btn-warning disabled">Edit</span>
-                                <span class="btn btn-danger disabled">Delete</span>
                             </td>
                             <td></td>
                         </tr>
@@ -57,7 +55,6 @@ include '../../header.php';
                                 <a href="/MEDIATHEQ22/views/backend/artistes/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/artistes/create.php" class="btn btn-success">Create</a>
                                 <span class="btn btn-warning disabled">Edit</span>
-                                <span class="btn btn-danger disabled">Delete</span>
                             </td>
                             <td></td>
                         </tr>
@@ -67,7 +64,6 @@ include '../../header.php';
                                 <a href="/MEDIATHEQ22/views/backend/groupes/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/groupes/create.php" class="btn btn-success">Create</a>
                                 <span class="btn btn-warning disabled">Edit</span>
-                                <span class="btn btn-danger disabled">Delete</span>
                             </td>
                             <td></td>
                         </tr>
@@ -77,7 +73,6 @@ include '../../header.php';
                                 <a href="/MEDIATHEQ22/views/backend/likes/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/likes/create.php" class="btn btn-success">Create</a>
                                 <span class="btn btn-warning disabled">Edit</span>
-                                <span class="btn btn-danger disabled">Delete</span>
                             </td>
                             <td></td>
                         </tr>
@@ -87,7 +82,6 @@ include '../../header.php';
                                 <a href="/MEDIATHEQ22/views/backend/titres/list.php" class="btn btn-primary">List</a>
                                 <a href="/MEDIATHEQ22/views/backend/titres/create.php" class="btn btn-success">Create</a>
                                 <span class="btn btn-warning disabled">Edit</span>
-                                <span class="btn btn-danger disabled">Delete</span>
                             </td>
                             <td></td>
                         </tr>
@@ -97,7 +91,6 @@ include '../../header.php';
                                 <a href="/views/backend/statutsCC/list.php" class="btn btn-primary disabled">List</a>
                                 <a href="/views/backend/statutsCC/create.php" class="btn btn-success disabled">Create</a>
                                 <a href="/views/backend/statutsCC/edit.php" class="btn btn-warning disabled">Edit</a>
-                                <a href="/views/backend/statutsCC/delete.php" class="btn btn-danger disabled">Delete</a>
                             </td>
                             <td>
                                 <p>CC S2 : Exemple CRUD fourni</p>

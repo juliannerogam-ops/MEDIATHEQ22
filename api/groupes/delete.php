@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+require_once dirname(__DIR__, 2) . '/config.php';
 
 if (!isset($_SESSION['user'])) {
     header('Location: /MEDIATHEQ22/views/backend/security/login.php');

@@ -1,8 +1,67 @@
-/* Основні стилі для домашньої сторінки */
+/* Police principale du site */
+:root {
+  --pink-main: #F3C9D5;
+  --pink-light: #FBE7ED;
+  --pink-dark: #C56F8D;
+  --pink-text: #4A2430;
+}
+
+body {
+  font-family: 'Trueno', Arial, sans-serif;
+  background-color: var(--pink-main);
+  color: var(--pink-text);
+}
+
+.site-header {
+  background-color: var(--pink-main);
+}
+
+a {
+  color: var(--pink-dark);
+}
+
+a:hover {
+  color: var(--pink-text);
+}
+
+.table {
+  --bs-table-bg: var(--pink-light);
+  --bs-table-striped-bg: var(--pink-main);
+  --bs-table-color: var(--pink-text);
+}
+
+.form-control,
+.form-select {
+  background-color: var(--pink-light);
+  border-color: var(--pink-dark);
+  color: var(--pink-text);
+}
+
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-info,
+.btn-dark,
+.btn-secondary {
+  background-color: var(--pink-dark);
+  border-color: var(--pink-dark);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+.btn-warning:hover,
+.btn-danger:hover,
+.btn-info:hover,
+.btn-dark:hover,
+.btn-secondary:hover {
+  background-color: var(--pink-text);
+  border-color: var(--pink-text);
+}
 
 .home-section {
   padding: 2rem;
-  font-family: Arial, sans-serif; /* Або ваш шрифт */
 }
 
 
