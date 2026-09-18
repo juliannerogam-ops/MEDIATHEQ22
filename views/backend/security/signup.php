@@ -5,9 +5,9 @@ $error = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $prenom  = $_POST['prenomUser'] ?? '';
-    $nom     = $_POST['nomUser'] ?? '';
-    $email   = $_POST['eMailUser'] ?? '';
+    $prenom = trim($_POST['prenom'] ?? '');
+    $nom = trim($_POST['nom'] ?? '');
+    $email = trim($_POST['email'] ?? '');
 
 
         $exist = sql_select("user", "*", "eMailUser = '$email'");
