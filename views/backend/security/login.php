@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'prenom' => $user['prenomUser']
             ];
 
-            header('Location: /index.php');
+            header('Location: /MEDIATHEQ22/index.php');
             exit;
         }
     }

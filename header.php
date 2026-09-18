@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
   session_unset();
   session_destroy();
-  header('Location: /index.php');
+  header('Location: /MEDIATHEQ22/index.php');
   exit;
 }
 
@@ -43,9 +43,11 @@ require_once 'config.php';
     </div>
     <!--right align-->
     <div class="d-flex">
-      <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Rechercher sur le site…" aria-label="Search" >
-      </form>
+      <?php if (isset($_SESSION['user'])): ?>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Rechercher sur le site…" aria-label="Search" >
+        </form>
+      <?php endif; ?>
       <div class="d-flex align-items-center">
 
       <?php if (isset($_SESSION['user'])): ?>
