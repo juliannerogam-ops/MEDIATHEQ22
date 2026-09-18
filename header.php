@@ -36,8 +36,37 @@ require_once 'config.php';
       <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Rechercher sur le site…" aria-label="Search" >
       </form>
-      <a class="btn btn-primary m-1" href="/api/security/login.php" role="button">Login</a>
-      <a class="btn btn-dark m-1" href="/api/security/signup.php" role="button">Sign up</a>
+      <a class="btn btn-primary m-1" href="/views/backend/security/login.php" role="button">Login</a>
+      <a class="btn btn-dark m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>
+
+       <div class="d-flex align-items-center">
+
+      <?php if (isset($_SESSION['user'])): ?>
+
+        <span class="me-3">
+          👋 <?= htmlspecialchars($_SESSION['user']['pseudo']) ?>
+        </span>
+
+        <a class="btn btn-danger"
+           href="/views/backend/security/login.php?action=logout">
+           Déconnexion
+        </a>
+
+      <?php else: ?>
+
+        <a class="btn btn-primary m-1"
+           href="/views/backend/security/login.php">
+           Login
+        </a>
+
+        <a class="btn btn-dark m-1"
+           href="/views/backend/security/signup.php">
+           Sign up
+        </a>
+
+      <?php endif; ?>
+
+    </div>
     </div>
   </div>
 </nav>
